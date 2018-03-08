@@ -14,14 +14,23 @@ import Contacts
 class SpotDetailViewController: UIViewController {
     @IBOutlet weak var nameField: UITextField!
     @IBOutlet weak var addressField: UITextField!
+    @IBOutlet weak var averageRatingField: UILabel!
     @IBOutlet weak var cancelBarButton: UIBarButtonItem!
     @IBOutlet weak var saveBarButton: UIBarButtonItem!
     @IBOutlet weak var mapView: MKMapView!
+    @IBOutlet weak var cameraButton: UIButton!
+    @IBOutlet weak var reviewButton: UIButton!
+    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var collectionView: UICollectionView!
     
     var spot: Spot!
     let regionDistance: CLLocationDistance = 750 // in meters, about 1/2 mile
     var locationManger: CLLocationManager!
     var currentLocation: CLLocation!
+    var reviews: Reviews!
+    var photos: Photos!
+    var photo: Photo!
+    var imagePicker = UIImagePickerController()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,18 +40,20 @@ class SpotDetailViewController: UIViewController {
         self.view.addGestureRecognizer(tap)
         
         mapView.delegate = self
+        tableView.delegate = self
+        tableView.dataSource = self
+        collectionView.delegate = self
+        collectionView.dataSource = self
+        imagePicker.delegate = self
         
-        if let spot = spot {
+        if let spot = spot { // This is an existing spot - no editing
             nameField.text = spot.name
-            nameField.backgroundColor = UIColor.clear
-            nameField.isEnabled = false
             addressField.text = spot.address
-            addressField.backgroundColor = UIColor.clear
-            addressField.isEnabled = false
+            disableTextEditing()
             saveBarButton.title = ""
             cancelBarButton.title = ""
             navigationController?.setToolbarHidden(true, animated: true)
-        } else {
+        } else { // We are entering a new Spot - enable editing
             spot = Spot()
             nameField.addBorder(borderWidth: 0.5, cornerRadius: 5.0)
             addressField.addBorder(borderWidth: 0.5, cornerRadius: 5.0)
@@ -51,7 +62,30 @@ class SpotDetailViewController: UIViewController {
         
         let region = MKCoordinateRegionMakeWithDistance(spot.coordinate, regionDistance, regionDistance)
         mapView.setRegion(region, animated: true)
+        
+        reviews = Reviews()
+        photos = Photos()
+        
         updateUserInterface()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        reviews.loadData(spot: spot) {
+            self.tableView.reloadData()
+            if self.reviews.reviewArray.count > 0 {
+                let total = self.reviews.reviewArray.reduce(0) {$0 + $1.rating}
+                let average = Double(total) / Double(self.reviews.reviewArray.count)
+                self.averageRatingField.text = "\(average.roundTo(places: 1))"
+            } else {
+                self.averageRatingField.text = "-.-"
+            }
+        }
+        
+        photos.loadData(spot: spot) {
+            self.collectionView.reloadData()
+        }
     }
     
     func updateUserInterface() {
@@ -65,10 +99,46 @@ class SpotDetailViewController: UIViewController {
         mapView.addAnnotation(spot)
         mapView.setCenter(spot.coordinate, animated: true)
     }
-
+    
+    func disableTextEditing() {
+        nameField.backgroundColor = UIColor.clear
+        nameField.isEnabled = false
+        addressField.backgroundColor = UIColor.clear
+        addressField.isEnabled = false
+        nameField.addBorder(borderWidth: 0.0, cornerRadius: 5.0)
+        addressField.addBorder(borderWidth: 0.0, cornerRadius: 5.0)
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         spot.name = nameField.text!
         spot.address = addressField.text!
+        let identifier = segue.identifier ?? ""
+        switch identifier {
+        case "AddReview":
+            let navigationController = segue.destination as! UINavigationController
+            let destination = navigationController.viewControllers.first as! ReviewTableViewController
+            destination.spot = spot
+            if let selectedIndexPath = tableView.indexPathForSelectedRow {
+                tableView.deselectRow(at: selectedIndexPath, animated: true)
+            }
+        case "ShowReview":
+            let destination = segue.destination as! ReviewTableViewController
+            let selectedReview = tableView.indexPathForSelectedRow!.row
+            destination.review = reviews.reviewArray[selectedReview]
+            destination.spot = spot
+        case "AddPhoto":
+            let navigationController = segue.destination as! UINavigationController
+            let destination = navigationController.viewControllers.first as! PhotoTableViewController
+            destination.photo = photo
+            destination.spot = spot
+        case "ShowPhoto":
+            let destination = segue.destination as! PhotoTableViewController
+            let selectedPhoto = collectionView.indexPathsForSelectedItems?.first
+            destination.photo = photos.photoArray[selectedPhoto!.row]
+            destination.spot = spot
+        default:
+            print("Couldn't find a case for segue identifier \(segue.identifier!)")
+        }
     }
     
     func showAlert(title: String, message: String) {
@@ -102,12 +172,81 @@ class SpotDetailViewController: UIViewController {
         updateUserInterface()
     }
     
+    func saveCancelAlert(title: String, message: String, segueIdentifier: String) {
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let saveAction = UIAlertAction(title: "Save", style: .default) { _ in
+            self.spot.saveData() { success in
+                if success {
+                    self.saveBarButton.title = "Done"
+                    self.cancelBarButton.title = ""
+                    self.navigationController?.setToolbarHidden(true, animated: false)
+                    self.disableTextEditing()
+                    if segueIdentifier == "AddReview" {
+                        self.reviews.loadData(spot: self.spot) {
+                            self.tableView.reloadData()
+                        }
+                        self.performSegue(withIdentifier: segueIdentifier, sender: nil)
+                    } else if segueIdentifier == "AddPhoto" {
+                        self.cameraLibraryAlert()
+                    }
+                } else {
+                    print("Can't segue because of the error")
+                }
+            }
+        }
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        alertController.addAction(saveAction)
+        alertController.addAction(cancelAction)
+        present(alertController, animated: true, completion: nil)
+    }
+    
+    func cameraLibraryAlert() {
+        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        let cameraAction = UIAlertAction(title: "Camera", style: .default) { (cameraAction) in
+            self.accessCamera()
+        }
+        let libraryAction = UIAlertAction(title: "Photo Library", style: .default) { (libraryAction) in
+            self.accessLibrary()
+        }
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        alertController.addAction(cameraAction)
+        alertController.addAction(libraryAction)
+        alertController.addAction(cancelAction)
+        present(alertController, animated: true, completion: nil)
+    }
+    
+    @IBAction func reviewButtonPressed(_ sender: UIButton) {
+        if spot.documentID == "" {
+            saveCancelAlert(title: "This Venue Has Not Been Saved", message: "You must save this venue before you can review it.", segueIdentifier: "AddReview")
+        } else {
+            performSegue(withIdentifier: "AddReview", sender: nil)
+        }
+    }
+    
+    @IBAction func cameraButtonPressed(_ sender: UIButton) {
+        if spot.documentID == "" {
+            saveCancelAlert(title: "This Venue Has Not Been Saved", message: "You must save this venue before you can add a photo.", segueIdentifier: "AddPhoto")
+        } else {
+            cameraLibraryAlert()
+        }
+    }
+    
     @IBAction func cancelButtonPressed(_ sender: UIBarButtonItem) {
         let isPresentingInAddMode = presentingViewController is UINavigationController
         if isPresentingInAddMode {
             dismiss(animated: true, completion: nil)
         } else {
             navigationController?.popViewController(animated: true)
+        }
+    }
+    
+    @IBAction func saveButtonPressed(_ sender: UIBarButtonItem) {
+        spot.saveData() { success in
+            if success {
+                self.performSegue(withIdentifier: "unwindFromSpotDetailViewControllerWithSegue", sender: sender)
+            } else {
+                print("Can't segue because of the error")
+            }
         }
     }
     
@@ -145,10 +284,8 @@ extension SpotDetailViewController: MKMapViewDelegate {
     }
     
     func mapView(_ mapView: MKMapView, didAdd views: [MKAnnotationView]) {
-        for view in views {
-            if view.annotation is MKUserLocation {
-                view.isEnabled = false
-            }
+        if let view = views.first(where: {$0.annotation is MKUserLocation}) {
+            view.isEnabled = false
         }
     }
 }
@@ -252,5 +389,63 @@ extension SpotDetailViewController: CLLocationManagerDelegate {
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         print("Failed to get user location.")
+    }
+}
+
+extension SpotDetailViewController: UITableViewDataSource, UITableViewDelegate {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return reviews.reviewArray.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ReviewCell", for: indexPath) as! SpotDetailReviewsTableViewCell
+        cell.review = reviews.reviewArray[indexPath.row]
+        return cell
+    }
+}
+
+extension SpotDetailViewController: UICollectionViewDataSource, UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return photos.photoArray.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let photoCell = collectionView.dequeueReusableCell(withReuseIdentifier: "PhotoCell", for: indexPath) as! SpotDetailPhotoCollectionViewCell
+        photoCell.photo = photos.photoArray[indexPath.row]
+        // photoCell.photoImageView.image = photos.photoArray[indexPath.row].image
+        return photoCell
+    }
+}
+
+extension SpotDetailViewController: UINavigationControllerDelegate, UIImagePickerControllerDelegate {
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        photo = Photo()
+        photo.image = info[UIImagePickerControllerOriginalImage] as! UIImage
+        photos.photoArray.append(photo)
+        dismiss(animated: true) {
+            self.photos.loadData(spot: self.spot) {
+                self.collectionView.reloadData()
+            }
+            self.performSegue(withIdentifier: "AddPhoto", sender: nil)
+        }
+    }
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        dismiss(animated: true, completion: nil)
+    }
+    
+    func accessLibrary() {
+        imagePicker.sourceType = .photoLibrary
+        present(imagePicker, animated: true, completion: nil)
+    }
+    
+    func accessCamera() {
+        if UIImagePickerController.isSourceTypeAvailable(.camera) {
+            imagePicker.sourceType = .camera
+            present(imagePicker, animated: true, completion: nil)
+        } else {
+            showAlert(title: "Camera Not Available", message: "There is no camera available on this device.")
+        }
     }
 }

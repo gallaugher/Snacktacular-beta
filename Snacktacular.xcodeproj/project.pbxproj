@@ -9,13 +9,29 @@
 /* Begin PBXBuildFile section */
 		3E0EFA21201E589700CEB154 /* SpotDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E0EFA20201E589700CEB154 /* SpotDetailViewController.swift */; };
 		3E0EFA23201E624A00CEB154 /* UIView+addBorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E0EFA22201E624A00CEB154 /* UIView+addBorder.swift */; };
+		3E2DC3DB2049F35B0086EEF9 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3E2DC3DA2049F35B0086EEF9 /* GoogleService-Info.plist */; };
+		3E385EE8205022E700C52520 /* SnackUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E385EE7205022E700C52520 /* SnackUser.swift */; };
+		3E385EEA2050A07600C52520 /* SpotsListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E385EE92050A07600C52520 /* SpotsListTableViewCell.swift */; };
+		3E41F9FF2051CFC20028AF69 /* UserListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E41F9FE2051CFC20028AF69 /* UserListTableViewCell.swift */; };
+		3E52004A204A5BE500A93AF6 /* ReviewTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E520049204A5BE500A93AF6 /* ReviewTableViewController.swift */; };
+		3E67F6202050CBBA00915CD8 /* UsersListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E67F61F2050CBBA00915CD8 /* UsersListViewController.swift */; };
+		3E67F6222050CBD600915CD8 /* UserProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E67F6212050CBD600915CD8 /* UserProfileViewController.swift */; };
+		3E67F6242050CCEB00915CD8 /* SnackUsers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E67F6232050CCEB00915CD8 /* SnackUsers.swift */; };
+		3E8770DB204E0EFA005E509D /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E8770DA204E0EFA005E509D /* Photo.swift */; };
+		3E8770DD204E1499005E509D /* Photos.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E8770DC204E1499005E509D /* Photos.swift */; };
+		3E8770DF204E1A67005E509D /* SpotDetailPhotoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E8770DE204E1A67005E509D /* SpotDetailPhotoCollectionViewCell.swift */; };
+		3E934C3F204B99FC00734911 /* SpotDetailReviewsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E934C3E204B99FC00734911 /* SpotDetailReviewsTableViewCell.swift */; };
 		3ECBF783201D627500A1BC1D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ECBF782201D627500A1BC1D /* AppDelegate.swift */; };
-		3ECBF785201D627500A1BC1D /* SpotListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ECBF784201D627500A1BC1D /* SpotListViewController.swift */; };
+		3ECBF785201D627500A1BC1D /* SpotsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ECBF784201D627500A1BC1D /* SpotsListViewController.swift */; };
 		3ECBF788201D627500A1BC1D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3ECBF786201D627500A1BC1D /* Main.storyboard */; };
 		3ECBF78A201D627500A1BC1D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3ECBF789201D627500A1BC1D /* Assets.xcassets */; };
 		3ECBF78D201D627500A1BC1D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3ECBF78B201D627500A1BC1D /* LaunchScreen.storyboard */; };
 		3ECBF795201D723A00A1BC1D /* Spot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ECBF794201D723A00A1BC1D /* Spot.swift */; };
-		3EEFB12D203386870064A377 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3EEFB12C203386870064A377 /* GoogleService-Info.plist */; };
+		3EE59EAA204F84C6008D53D1 /* PhotoTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EE59EA9204F84C6008D53D1 /* PhotoTableViewController.swift */; };
+		3EF67AA6204A5474003AB17F /* Reviews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EF67AA5204A5474003AB17F /* Reviews.swift */; };
+		3EF67AA8204A55E0003AB17F /* Review.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EF67AA7204A55E0003AB17F /* Review.swift */; };
+		3EF7E1C42050A48D00CF3C66 /* Double+roundTo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EF7E1C32050A48D00CF3C66 /* Double+roundTo.swift */; };
+		3EFB1E64204386EA0058C6D8 /* Spots.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EFB1E63204386EA0058C6D8 /* Spots.swift */; };
 		565A063F91579C24A49EF71A /* Pods_Snacktacular.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 86F46130F6A2F32252957BB7 /* Pods_Snacktacular.framework */; };
 /* End PBXBuildFile section */
 
@@ -24,15 +40,31 @@
 		2DF0BA0DB73D3F79A2652055 /* Pods-Snacktacular.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Snacktacular.release.xcconfig"; path = "Pods/Target Support Files/Pods-Snacktacular/Pods-Snacktacular.release.xcconfig"; sourceTree = "<group>"; };
 		3E0EFA20201E589700CEB154 /* SpotDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpotDetailViewController.swift; sourceTree = "<group>"; };
 		3E0EFA22201E624A00CEB154 /* UIView+addBorder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+addBorder.swift"; sourceTree = "<group>"; };
+		3E2DC3DA2049F35B0086EEF9 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
+		3E385EE7205022E700C52520 /* SnackUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnackUser.swift; sourceTree = "<group>"; };
+		3E385EE92050A07600C52520 /* SpotsListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpotsListTableViewCell.swift; sourceTree = "<group>"; };
+		3E41F9FE2051CFC20028AF69 /* UserListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserListTableViewCell.swift; sourceTree = "<group>"; };
+		3E520049204A5BE500A93AF6 /* ReviewTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewTableViewController.swift; sourceTree = "<group>"; };
+		3E67F61F2050CBBA00915CD8 /* UsersListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersListViewController.swift; sourceTree = "<group>"; };
+		3E67F6212050CBD600915CD8 /* UserProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileViewController.swift; sourceTree = "<group>"; };
+		3E67F6232050CCEB00915CD8 /* SnackUsers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnackUsers.swift; sourceTree = "<group>"; };
+		3E8770DA204E0EFA005E509D /* Photo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
+		3E8770DC204E1499005E509D /* Photos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Photos.swift; sourceTree = "<group>"; };
+		3E8770DE204E1A67005E509D /* SpotDetailPhotoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpotDetailPhotoCollectionViewCell.swift; sourceTree = "<group>"; };
+		3E934C3E204B99FC00734911 /* SpotDetailReviewsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpotDetailReviewsTableViewCell.swift; sourceTree = "<group>"; };
 		3ECBF77F201D627500A1BC1D /* Snacktacular.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Snacktacular.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3ECBF782201D627500A1BC1D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		3ECBF784201D627500A1BC1D /* SpotListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpotListViewController.swift; sourceTree = "<group>"; };
+		3ECBF784201D627500A1BC1D /* SpotsListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpotsListViewController.swift; sourceTree = "<group>"; };
 		3ECBF787201D627500A1BC1D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		3ECBF789201D627500A1BC1D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3ECBF78C201D627500A1BC1D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3ECBF78E201D627500A1BC1D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3ECBF794201D723A00A1BC1D /* Spot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Spot.swift; sourceTree = "<group>"; };
-		3EEFB12C203386870064A377 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
+		3EE59EA9204F84C6008D53D1 /* PhotoTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoTableViewController.swift; sourceTree = "<group>"; };
+		3EF67AA5204A5474003AB17F /* Reviews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reviews.swift; sourceTree = "<group>"; };
+		3EF67AA7204A55E0003AB17F /* Review.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Review.swift; sourceTree = "<group>"; };
+		3EF7E1C32050A48D00CF3C66 /* Double+roundTo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+roundTo.swift"; sourceTree = "<group>"; };
+		3EFB1E63204386EA0058C6D8 /* Spots.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Spots.swift; sourceTree = "<group>"; };
 		86F46130F6A2F32252957BB7 /* Pods_Snacktacular.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Snacktacular.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -70,15 +102,31 @@
 			isa = PBXGroup;
 			children = (
 				3ECBF782201D627500A1BC1D /* AppDelegate.swift */,
+				3EFB1E63204386EA0058C6D8 /* Spots.swift */,
 				3ECBF794201D723A00A1BC1D /* Spot.swift */,
-				3ECBF784201D627500A1BC1D /* SpotListViewController.swift */,
+				3EF67AA5204A5474003AB17F /* Reviews.swift */,
+				3EF67AA7204A55E0003AB17F /* Review.swift */,
+				3E8770DC204E1499005E509D /* Photos.swift */,
+				3E8770DA204E0EFA005E509D /* Photo.swift */,
+				3E67F6232050CCEB00915CD8 /* SnackUsers.swift */,
+				3E385EE7205022E700C52520 /* SnackUser.swift */,
+				3ECBF784201D627500A1BC1D /* SpotsListViewController.swift */,
+				3E385EE92050A07600C52520 /* SpotsListTableViewCell.swift */,
 				3E0EFA20201E589700CEB154 /* SpotDetailViewController.swift */,
+				3E934C3E204B99FC00734911 /* SpotDetailReviewsTableViewCell.swift */,
+				3E8770DE204E1A67005E509D /* SpotDetailPhotoCollectionViewCell.swift */,
+				3E520049204A5BE500A93AF6 /* ReviewTableViewController.swift */,
+				3EE59EA9204F84C6008D53D1 /* PhotoTableViewController.swift */,
+				3E67F61F2050CBBA00915CD8 /* UsersListViewController.swift */,
+				3E41F9FE2051CFC20028AF69 /* UserListTableViewCell.swift */,
+				3E67F6212050CBD600915CD8 /* UserProfileViewController.swift */,
 				3ECBF786201D627500A1BC1D /* Main.storyboard */,
 				3E0EFA22201E624A00CEB154 /* UIView+addBorder.swift */,
+				3EF7E1C32050A48D00CF3C66 /* Double+roundTo.swift */,
 				3ECBF789201D627500A1BC1D /* Assets.xcassets */,
 				3ECBF78B201D627500A1BC1D /* LaunchScreen.storyboard */,
 				3ECBF78E201D627500A1BC1D /* Info.plist */,
-				3EEFB12C203386870064A377 /* GoogleService-Info.plist */,
+				3E2DC3DA2049F35B0086EEF9 /* GoogleService-Info.plist */,
 			);
 			path = Snacktacular;
 			sourceTree = "<group>";
@@ -163,7 +211,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3ECBF78D201D627500A1BC1D /* LaunchScreen.storyboard in Resources */,
-				3EEFB12D203386870064A377 /* GoogleService-Info.plist in Resources */,
+				3E2DC3DB2049F35B0086EEF9 /* GoogleService-Info.plist in Resources */,
 				3ECBF78A201D627500A1BC1D /* Assets.xcassets in Resources */,
 				3ECBF788201D627500A1BC1D /* Main.storyboard in Resources */,
 			);
@@ -179,11 +227,11 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Snacktacular/Pods-Snacktacular-resources.sh",
-				$PODS_CONFIGURATION_BUILD_DIR/FirebaseUI/FirebaseAuthUI.bundle,
-				$PODS_CONFIGURATION_BUILD_DIR/FirebaseUI/FirebaseFacebookAuthUI.bundle,
-				$PODS_CONFIGURATION_BUILD_DIR/FirebaseUI/FirebaseGoogleAuthUI.bundle,
-				$PODS_CONFIGURATION_BUILD_DIR/FirebaseUI/FirebasePhoneAuthUI.bundle,
-				$PODS_CONFIGURATION_BUILD_DIR/FirebaseUI/FirebaseTwitterAuthUI.bundle,
+				"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseUI/FirebaseAuthUI.bundle",
+				"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseUI/FirebaseFacebookAuthUI.bundle",
+				"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseUI/FirebaseGoogleAuthUI.bundle",
+				"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseUI/FirebasePhoneAuthUI.bundle",
+				"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseUI/FirebaseTwitterAuthUI.bundle",
 				"${PODS_ROOT}/GoogleMaps/Maps/Frameworks/GoogleMaps.framework/Resources/GoogleMaps.bundle",
 				"${PODS_ROOT}/GooglePlacePicker/Frameworks/GooglePlacePicker.framework/Resources/GooglePlacePicker.bundle",
 				"${PODS_ROOT}/GooglePlaces/Frameworks/GooglePlaces.framework/Resources/GooglePlaces.bundle",
@@ -193,7 +241,17 @@
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/FirebaseAuthUI.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/FirebaseFacebookAuthUI.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/FirebaseGoogleAuthUI.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/FirebasePhoneAuthUI.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/FirebaseTwitterAuthUI.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleMaps.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GooglePlacePicker.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GooglePlaces.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleSignIn.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/TwitterKitResources.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/TwitterShareExtensionUIResources.bundle",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -275,11 +333,27 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3ECBF785201D627500A1BC1D /* SpotListViewController.swift in Sources */,
+				3E8770DD204E1499005E509D /* Photos.swift in Sources */,
+				3E934C3F204B99FC00734911 /* SpotDetailReviewsTableViewCell.swift in Sources */,
+				3E67F6222050CBD600915CD8 /* UserProfileViewController.swift in Sources */,
+				3ECBF785201D627500A1BC1D /* SpotsListViewController.swift in Sources */,
+				3E52004A204A5BE500A93AF6 /* ReviewTableViewController.swift in Sources */,
+				3EF67AA8204A55E0003AB17F /* Review.swift in Sources */,
+				3E67F6202050CBBA00915CD8 /* UsersListViewController.swift in Sources */,
+				3EFB1E64204386EA0058C6D8 /* Spots.swift in Sources */,
+				3EF67AA6204A5474003AB17F /* Reviews.swift in Sources */,
+				3E8770DF204E1A67005E509D /* SpotDetailPhotoCollectionViewCell.swift in Sources */,
+				3EE59EAA204F84C6008D53D1 /* PhotoTableViewController.swift in Sources */,
 				3E0EFA21201E589700CEB154 /* SpotDetailViewController.swift in Sources */,
+				3E8770DB204E0EFA005E509D /* Photo.swift in Sources */,
+				3E41F9FF2051CFC20028AF69 /* UserListTableViewCell.swift in Sources */,
+				3E67F6242050CCEB00915CD8 /* SnackUsers.swift in Sources */,
+				3E385EE8205022E700C52520 /* SnackUser.swift in Sources */,
 				3ECBF795201D723A00A1BC1D /* Spot.swift in Sources */,
 				3ECBF783201D627500A1BC1D /* AppDelegate.swift in Sources */,
 				3E0EFA23201E624A00CEB154 /* UIView+addBorder.swift in Sources */,
+				3EF7E1C42050A48D00CF3C66 /* Double+roundTo.swift in Sources */,
+				3E385EEA2050A07600C52520 /* SpotsListTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -339,6 +413,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				FRAMEWORK_SEARCH_PATHS = "$(SRCROOT)";
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -396,6 +471,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				FRAMEWORK_SEARCH_PATHS = "$(SRCROOT)";
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;

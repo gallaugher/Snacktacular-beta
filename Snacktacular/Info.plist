@@ -23,7 +23,7 @@
 			<string>Editor</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>com.googleusercontent.apps.538360632566-m6re8kpluecv9dbaq340gor5tbnrtvc1</string>
+				<string>com.googleusercontent.apps.985512772746-tlt780l6pof2nn7lvvd7i5bd6gbgtasr</string>
 			</array>
 		</dict>
 	</array>
@@ -32,9 +32,9 @@
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
-	<string>This app willneed access to the device's location in order to determine where a user is in relation to the map and snack spots.</string>
+	<string>This app willneed access to the device&apos;s location in order to determine where a user is in relation to the map and snack spots.</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>This app willneed access to the device's location in order to determine where a user is in relation to the map and snack spots.</string>
+	<string>This app willneed access to the device&apos;s location in order to determine where a user is in relation to the map and snack spots.</string>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>
@@ -60,5 +60,9 @@
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
+	<key>NSCameraUsageDescription</key>
+	<string>This app will need access to your camera in order to post photos.</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>This app needs access to the photo library in order to post images stored on your device.</string>
 </dict>
 </plist>
